@@ -619,7 +619,7 @@ function doPost(e) {
       anyTaskCount = 0;
 
       // Get response from repeatable function to see remaining requests
-      const response = api_getAuthenticatedUserProfile("flags.classSelected,preferences.disableClasses,stats,items.gear.equipped,profile.name,flags.cronCount");
+      const response = api_getAuthenticatedUserProfile("flags.classSelected,preferences.disableClasses,stats,items.gear.equipped,profile.name");
       const respHeaders = response.getAllHeaders();
       const remainingReq = Number(respHeaders["x-ratelimit-remaining"]);
       const resetDateTime = new Date(respHeaders["x-ratelimit-reset"]);
