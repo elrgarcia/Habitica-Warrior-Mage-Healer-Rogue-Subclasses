@@ -619,7 +619,7 @@ function doPost(e) {
       anyTaskCount = 0;
 
       // Get response from repeatable function to see remaining requests
-      const response = api_getAuthenticatedUserProfile("preferences.disableClasses,stats,items.gear.equipped,profile.name");
+      const response = api_getAuthenticatedUserProfile("stats,items.gear.equipped,profile.name");
       const respHeaders = response.getAllHeaders();
       const remainingReq = Number(respHeaders["x-ratelimit-remaining"]);
       const resetDateTime = new Date(respHeaders["x-ratelimit-reset"]);
@@ -774,7 +774,7 @@ function doPost(e) {
   return HtmlService.createHtmlOutput();
 }
 
-function api_getAuthenticatedUserProfile(userFields) {
+function api_getAuthenticatedUserProfile(userFields) {    // user.flags and user.preferences are automatically acquired, do not include these in the userFields argument
   const params = {
     "method" : "get",
     "headers" : HEADERS,
